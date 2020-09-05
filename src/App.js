@@ -6,11 +6,13 @@ import {ModalItem} from './Components/Modal/ModalItem';
 import {Order} from './Components/Order/Order';
 import { useOpenItem } from './Components/Hooks/useOpenItem';
 import {useOrders} from './Components/Hooks/useOrders';
+import { useCount } from './Components/Hooks/useCount';
 
 function App() {
 
   const openItem=useOpenItem();
   const orders=useOrders();
+  const count=useCount();
 
   return (
     <>
