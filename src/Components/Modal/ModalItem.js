@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {ButtonCheckout} from '../Style/ButtonCheckout';
 import {CountItem} from './CountItem';
 import { useCount } from '../Hooks/useCount';
-
+import {totalPriceItems,formatCurrency} from '../Functions/secondaryFunction';
 const Overlay=styled.div`
     position:fixed;
     display:flex;
@@ -44,6 +44,10 @@ const Content=styled.section`
  height:calc(100%-20px);
  justify-content:space-between;
 `;
+const TotalPriceItem=styled.div`
+display:flex;
+justify-content:space-between;
+    `;
 
 export const ModalItem=({openItem,setOpenItem,orders,setOrders})=>{
 
@@ -56,8 +60,10 @@ export const ModalItem=({openItem,setOpenItem,orders,setOrders})=>{
     }
 
     const order={
-        ...openItem
+        ...openItem,
+        count:counter.count
     };
+
 
 const addToOrder=()=>{
     setOrders([...orders,order])
@@ -71,10 +77,15 @@ return (
 <Content>
 <Named>{openItem.name}</Named>
 <Price>{openItem.price}</Price>    
-<CountItem counter={counter}/>
+<CountItem {...counter}/>
+<TotalPriceItem>
+    <span>Цена:</span>
+    <span>{formatCurrency(totalPriceItems(order))}</span>
+</TotalPriceItem>
+<ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
 </Content>
 
-<ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
+
 </Modal>
 </Overlay>
 )
