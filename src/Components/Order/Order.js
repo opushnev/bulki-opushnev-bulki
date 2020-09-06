@@ -8,6 +8,7 @@ const OrderStyled=styled.section`
     position:fixed;
     display:flex;
     flex-direction:column;
+    align-items:space-around;
     top:80px;
     left:0;
     background:#fff;
@@ -48,8 +49,8 @@ const EmptyList=styled.p`
 `;
 export const Order=({orders})=>{
 
-    const total=orders.reduce((result,order)=>totalPriceItems(order)+result,0)
-
+    const total=orders.reduce((result,order)=>totalPriceItems(order)+result,0);
+const  totalCount=orders.reduce((result,order)=>order.count+result,0);
     return (
         <>
         <OrderStyled>
@@ -62,13 +63,16 @@ export const Order=({orders})=>{
 <EmptyList>Список заказов пуст</EmptyList>
 }
             </OrderContent>
+<div>
 <Total>
 <span>Итого</span>
-<span>5</span>
+<span>{totalCount}</span>
 <TotalPrice>{formatCurrency(total)}</TotalPrice>
-        
-</Total>        
+</Total>
+</div>
+<div>        
 <ButtonCheckout>Оформить заказ</ButtonCheckout>
+</div>
         </OrderStyled>
         </>
     )
