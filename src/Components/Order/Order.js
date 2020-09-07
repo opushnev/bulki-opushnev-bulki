@@ -30,7 +30,9 @@ const OrderContent=styled.div`
 const OrderList=styled.ul`
 
 `;
-
+const OrderTotal=styled.div`
+    
+`;
 const Total=styled.div`
 display:flex;
 margin-bottom:30px;
@@ -55,24 +57,22 @@ const  totalCount=orders.reduce((result,order)=>order.count+result,0);
         <>
         <OrderStyled>
           <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>    
-            <OrderContent>
+<OrderContent>
 {orders.length ?
 <OrderList>
 {orders.map(order=> <OrderListItem order={order}/>)}
 </OrderList>:
 <EmptyList>Список заказов пуст</EmptyList>
 }
-            </OrderContent>
-<div>
+</OrderContent>
+<OrderTotal>
 <Total>
 <span>Итого</span>
 <span>{totalCount}</span>
 <TotalPrice>{formatCurrency(total)}</TotalPrice>
-</Total>
-</div>
-<div>        
+</Total>    
 <ButtonCheckout>Оформить заказ</ButtonCheckout>
-</div>
+</OrderTotal>
         </OrderStyled>
         </>
     )
