@@ -50,7 +50,7 @@ return (
     <OrderAll>
 <OrderItemStyled>
     <ItemNameD>
-<ItemName>{order.name}</ItemName>
+<ItemName>{order.name} {order.choice}</ItemName>
 <StyleTop>{topping}</StyleTop>
 </ItemNameD>
 <span>{order.count}</span>

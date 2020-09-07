@@ -12,4 +12,8 @@ export const ButtonCheckout=styled.button`
     color:white;
     border-color:transparent;
     cursor:pointer;
+    &:disabled{
+        color:#bbb;
+        background-color:#ccc;
+    }
 `;
