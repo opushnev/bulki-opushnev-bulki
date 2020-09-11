@@ -12,7 +12,11 @@ export const ButtonCheckout=styled.button`
     color:white;
     border-color:transparent;
     cursor:pointer;
-    &:disabled{
+    &:hover {
+        color:black;
+        border-color:white;
+    }
+    &:disabled {
         color:#bbb;
         background-color:#ccc;
     }

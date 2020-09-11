@@ -44,14 +44,14 @@ const dbMenu = {
 	],
 	other: [
 		{
-			name: 'Coka',
+			name: 'Напиток',
 			img: '/menu/soda.png',
 			id: 1,
 			price: 50,
 			choices: ['Coca-cola', 'Fanta', 'Mirinda', 'Sprite'],
 		},
 		{
-			name: 'Чайкофф',
+			name: 'Чай',
 			img: '/menu/tea.png',
 			id: 2,
 			price: 70,
