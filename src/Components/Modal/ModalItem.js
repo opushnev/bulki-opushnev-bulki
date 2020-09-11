@@ -56,9 +56,10 @@ justify-content:space-between;
 
 export const ModalItem=({openItem,setOpenItem,orders,setOrders})=>{
 
-    const counter=useCount();
+    const counter=useCount(openItem.count);
     const toppings=useToppings(openItem);
     const choices=useChoices(openItem);
+    const isEdit=openItem.index>-1;
     function closeModal(e){
         if(e.target.id==='overlay'){
             setOpenItem(null);
@@ -72,12 +73,16 @@ export const ModalItem=({openItem,setOpenItem,orders,setOrders})=>{
         choice:choices.choice,
     };
 
-
+const editOrder =()=>{
+    const newOrder=[...orders];
+    newOrder[openItem.index]=order;
+    setOrders(newOrder);
+    setOpenItem(null);
+}
 const addToOrder=()=>{
     setOrders([...orders,order])
     setOpenItem(null);
 }
-console.dir(order ,order.choice);
 return (
 <Overlay id="overlay" onClick={closeModal}>
     <Modal>
@@ -93,9 +98,9 @@ return (
     <span>{formatCurrency(totalPriceItems(order))}</span>
 </TotalPriceItem>
 <ButtonCheckout 
-onClick={addToOrder}
+onClick={isEdit?editOrder:addToOrder}
 disabled={order.choices && !order.choice}
->Добавить</ButtonCheckout>
+>{isEdit?'Редактировать':'Добавить'}</ButtonCheckout>
 </Content>
 
 

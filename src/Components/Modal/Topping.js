@@ -19,7 +19,7 @@ const ToppingWrap=styled.div`
 
 
 export function Toppings({toppings,checkToppings}){
-    console.log(toppings)
+    //console.log(toppings)
     return (
         <>
         <h3>Добавки</h3>
