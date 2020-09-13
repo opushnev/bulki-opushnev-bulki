@@ -29,15 +29,31 @@ const Login=styled.button`
     font-size:20px;
     color:white;
 `;
-export const Navbar=()=>(
+const User=styled.span`
+    font-size:20px;
+    marging:10px;
+    cursor:pointer;
+`;
+const Logout=styled.span`
+    font-size:10px;
+    cursor:pointer;
+
+`;
+export const Navbar=({authentication,login,Logout})=>(
     <NavbarStyled>
         <LogoImg>
         <img src={logobar} alt="Бургеры"/>
         <H1>БургерТОП</H1>
          </LogoImg>
-        <Login>
-            <img src={signbar} alt="Войти"/>
-            <p>Войти</p>
-            </Login>
+       {authentication ?
+        <User>
+            <span>{authentication.displayName}</span>
+        <Logout onClick={Logout}>Выйти</Logout>
+        </User>
+        :<Login onClick={login}>
+        <img src={signbar} alt="Войти"/>
+        <p>Войти</p>
+        </Login>
+       }
     </NavbarStyled>
 );
